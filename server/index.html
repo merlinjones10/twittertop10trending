@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tweets</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <div id="twitter-div">
-        <h3>Tweetz</h3>
-    <ul id= "tweetStream">
-    </ul>
+      <h3>Tweetz</h3>
+      <ul id="tweetStream"></ul>
     </div>
-<script src="/socket.io/socket.io.js"></script>
- <script>
-    //  start the server first in index.js! {npm start}
-    
-    var socket = io();
-    var trending = document.getElementById('tweetStream')
-    // const tweets = []
-    socket.on('tweet', (tweet) => {
-        console.log(tweet[0].trends[0].tweet_volume)
-        for (let i = 0; i < 10 ; i++){
-            let tweetData = {
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      //  start the server first in index.js! {npm start}
+
+      var socket = io();
+      var trending = document.getElementById("tweetStream");
+      // const tweets = []
+      socket.on("tweet", (tweet) => {
+        console.log(tweet[0].trends[0].tweet_volume);
+        for (let i = 0; i < 10; i++) {
+          let tweetData = {
             id: tweet[0].trends[i].name,
-            tweetVolume: tweet[0].trends[i].tweet_volume
-            }
-            let tweetElement = document.createElement('li');
-            tweetElement.innerText = `${tweetData.id}: ${tweetData.tweetVolume} mentions`;
-            trending.appendChild(tweetElement);
+            tweetVolume: tweet[0].trends[i].tweet_volume,
+          };
+          let tweetElement = document.createElement("li");
+          tweetElement.innerText = `${tweetData.id}: ${tweetData.tweetVolume} mentions`;
+          trending.appendChild(tweetElement);
         }
-    })
-</script>
-</body>
+      });
+    </script>
+  </body>
 </html>

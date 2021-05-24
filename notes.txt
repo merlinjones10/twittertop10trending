@@ -1,4 +1,7 @@
 http://localhost:3000/
 
 start index.js first by typing npm start
-server can be stopped with ctrl+c
+
+then in browser: http://localhost:3000/
+
+server can be stopped with ctrl+c , you probably want to do this before quitting or making edits
